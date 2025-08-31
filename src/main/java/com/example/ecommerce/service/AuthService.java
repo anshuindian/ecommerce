@@ -1,6 +1,14 @@
 package com.example.ecommerce.service;
 
- @Service
+import com.example.ecommerce.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+
+@Service
 public class AuthService {
 
     @Autowired
@@ -11,10 +19,12 @@ public class AuthService {
 
     // Register new user
     public User registerUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRole("ROLE_USER"); // Default role
+        user.equals(passwordEncoder.encode(user.getPassword()));
+        user.isEnabled(); // Default role
         return userRepository.save(user);
     }
+
+
 
     // Optional: Check if email already exists
     public boolean emailExists(String email) {
@@ -32,6 +42,4 @@ public class AuthService {
         }
         return Optional.empty();
     }
-}
-{
 }

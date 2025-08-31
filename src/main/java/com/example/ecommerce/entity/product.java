@@ -1,9 +1,11 @@
 package com.example.ecommerce.entity;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import org.springframework.data.annotation.Id;
 
-public class Product {
+@Entity
+public class product {
 
     @Id
 
@@ -26,7 +28,6 @@ public class Product {
     private int stock;
 
     public Long getId() {
-
         return id;
     }
 
@@ -74,3 +75,4 @@ public class Product {
         this.stock = stock;
     }
 }
+

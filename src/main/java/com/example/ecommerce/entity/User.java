@@ -1,10 +1,13 @@
+package com.example.ecommerce.entity;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import org.springframework.data.annotation.Id;
 
 @Entity
 
 public class User {
+
 
 
     @Id
@@ -27,8 +30,6 @@ public class User {
             role;
 
     public Long getId() {
-
-
         return id;
     }
 
@@ -68,6 +69,7 @@ public class User {
         this.role = role;
     }
 }
+
 
 
 

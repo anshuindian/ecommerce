@@ -1,6 +1,13 @@
-package com.example.ecommerce.controller;
+package com.example.ecommerce.controller.java;
 
+import com.example.ecommerce.entity.User;
+import com.example.ecommerce.repository.UserRepository;
+import com.example.ecommerce.service.AuthService;
+//import com.example.ecommerce.service.PasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,12 +31,13 @@ public class AuthController {
     }
 
     @PostMapping("/doRegister")
-    public String doRegister(@ModelAttribute User user) {
+    public String doRegister( User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole("ROLE_USER"); // default
-        userRepository.save(user);
+        S save = userRepository.save(User);
         return "redirect:/login";
     }
+
 
     @GetMapping("/default")
     public String defaultAfterLogin(Authentication authentication) {
@@ -43,5 +51,4 @@ public class AuthController {
 
     @Autowired
     private AuthService authService;
-}authController {
 }
